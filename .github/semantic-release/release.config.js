@@ -1,8 +1,13 @@
 const config = {
-    branches: ['main'],
+    branches: ['main', "release-notes-custom"],
     Plugins: [
         '@semantic-release/commit-analyzer',
-        '@semantic-release/release-notes-generator',
+        ['@semantic-release/release-notes-generator', {
+            "preset": "angular",
+            "writerOpts": {
+                "headerPartial": "##{{releaseType}}{{version}}\n"
+            }
+        }],
         '@semantic-release/changelog',
         '@semantic-release/github',
         [
