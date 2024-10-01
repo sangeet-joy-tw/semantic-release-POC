@@ -10,7 +10,11 @@ const config = {
                   footerPartial: '\n**Full Changelog**:https://github.com/XeroAPI/Xero-OpenAPI/compare/{{previousTag}}...{{version}}'
                 }
             }
-         ]
+         ],
+         '@semantic-release/commit-analyzer',
+         '@semantic-release/github',
+         '@semantic-release/git',
+
     ]
 }
 module.exports = config;
