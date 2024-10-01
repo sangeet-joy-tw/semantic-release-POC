@@ -5,7 +5,8 @@ const config = {
         ['@semantic-release/release-notes-generator', {
             "preset": "angular",
             "writerOpts": {
-                "headerPartial": "##{{releaseType}}{{version}}\n"
+                "headerPartial": "#{{version}}\n",
+                "footerPartial": "\n###Changelog\n{{hash}}"
             }
         }],
         '@semantic-release/changelog',
