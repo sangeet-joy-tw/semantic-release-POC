@@ -6,21 +6,12 @@ const config = {
             "preset": "angular",
             "writerOpts": {
                 "headerPartial": "#{{version}}\n",
-                "footerPartial": "\n###Changelog\n{{hash}}"
+                "footerPartial": "\n###Changelog - {{hash}}"
             }
         }],
         '@semantic-release/changelog',
         '@semantic-release/github',
-        [
-            '@semantic-release/git',
-            {
-                "assests": ["CHANGELOG.md"],
-                "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-            }
-        ],
-        ["@semantic-release/npm", {
-            "npmPublish": false,
-        }]
+        '@semantic-release/git'
     ]
 }
 
