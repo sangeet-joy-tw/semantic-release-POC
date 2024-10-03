@@ -6,6 +6,7 @@ const config = {
             {
                 preset: 'angular',
                 writerOpts: {
+                  headerPartial: '## What\'s changed',
                   footerPartial: '\n**Full Changelog**:https://github.com/XeroAPI/Xero-OpenAPI/compare/{{previousTag}}...{{version}}'
                 }
             }
