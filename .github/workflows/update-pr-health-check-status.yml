@@ -1,0 +1,30 @@
+name: Update PR health check status
+
+on:
+  repository_dispatch:
+    types: [remote-check-done]
+
+jobs:
+  update-pr-health-check-status:
+    runs-on: ubuntu-latest
+
+    steps:
+
+        - name: Update PR status
+          run: |
+            STATUS="${{ github.event.client_payload.status}}"
+
+            if [[ "$STATUS" == "success" ]]; then
+              STATE="success"
+              DESCRIPTION="remote workflow passed"
+            else
+              STATE="failure"
+              DESCRIPTION: "Remote workflow failed"
+            fi
+
+            curl -X POST -H "Authorization: token ${{secrets.TEST_TOKEN_JOY}}" \
+                 -H "Accept: application/vnd.github.v3+json" \
+                 -H "Content-Type: application/json" \
+                 https://api.github.com/repos/${{github.repository}}/statuses/${{github.event.client_payload.pr_number}} \
+                 -d '{ \"state\": \"$STATE\", \"context\": \"pr health check\", \"description\": \"$DESCRIPTION\" }'
+
