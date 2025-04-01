@@ -1,0 +1,25 @@
+name: PR health check
+
+on:
+  pull_request:
+    branches:
+        - main
+
+jobs:
+  trigger-remote:
+    runs-on: ubuntu-latest
+
+    steps:
+
+       - name: Trigger remote workflow
+         run: |
+           exit 1
+    outputs:
+      pr_number: ${{ github.event.pull_request.number}}
+
+  wait-for-webhook:
+    needs: trigger-remote
+    runs-on: ubuntu-latest
+    steps:
+      - name: Waiting for remote workflow
+        run: echo "waiting for remote workflow..." 
