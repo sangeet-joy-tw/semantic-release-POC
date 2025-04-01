@@ -10,7 +10,7 @@ jobs:
 
     steps:
 
-        - name: Update PR status
+        - name: Update PR health check status
           run: |
             STATUS="${{ github.event.client_payload.status}}"
 
