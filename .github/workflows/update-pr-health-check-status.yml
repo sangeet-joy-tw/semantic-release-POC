@@ -17,9 +17,10 @@ jobs:
             if [[ "$STATUS" == "success" ]]; then
               STATE="success"
               DESCRIPTION="remote workflow passed"
-            else
+            fi
+            if [[ "$STATUS" == "failure" ]]; then
               STATE="failure"
-              DESCRIPTION: "Remote workflow failed"
+              DESCRIPTION="remote workflow failed"
             fi
 
             PAYLOAD=$(jq -n \
