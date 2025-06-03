@@ -2,6 +2,11 @@ name: Create OAS release
 
 on:
   workflow_dispatch:
+    inputs:
+      cab_id:
+        description: "CAB id for the change/release"
+        required: true
+        type: string
 
 jobs:
   OAS-release:
